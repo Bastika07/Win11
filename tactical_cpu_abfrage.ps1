@@ -4,6 +4,7 @@ $headers = @{
 }
 $agentsUrl = "https://api.yourdomain.com/agents/"
 $cpuListUrl = "https://raw.githubusercontent.com/Bastika07/Win11/refs/heads/main/windows11-cpus.md"
+$csvPath = "C:\\temp\\tacticalrmm-cpu-check.csv"  # Pfad anpassen!
 
 # === FUNKTION ZUR NORMALISIERUNG ===
 function Normalize-CPUString($str) {
@@ -47,7 +48,8 @@ try {
     exit 1
 }
 
-# === VERGLEICH UND AUSGABE ===
+# === VERGLEICH & SAMMELN ===
+$results = @()
 foreach ($agent in $agentsResult) {
     $hostname = $agent.hostname
     # Feldnamen ggf. anpassen!
@@ -62,9 +64,15 @@ foreach ($agent in $agentsResult) {
         }
     }
 
-    if ($found) {
-        Write-Host "$hostname : $cpuRaw ==> ✅ Unterstützt"
-    } else {
-        Write-Host "$hostname : $cpuRaw ==> ❌ Nicht unterstützt"
+    $status = if ($found) { "Unterstützt" } else { "Nicht unterstützt" }
+    $results += [PSCustomObject]@{
+        Hostname      = $hostname
+        CPU           = $cpuRaw
+        'Windows 11 Status' = $status
     }
 }
+
+# === EXPORT ALS CSV ===
+$results | Export-Csv -Path $csvPath -NoTypeInformation -Encoding UTF8
+
+Write-Host "Ergebnis als CSV gespeichert: $csvPath"
