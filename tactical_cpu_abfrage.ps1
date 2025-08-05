@@ -53,7 +53,7 @@ $results = @()
 foreach ($agent in $agentsResult) {
     $hostname = $agent.hostname
     # Feldnamen ggf. anpassen!
-    $cpuRaw = $agent.cpu_model
+    $cpuRaw = ($agent.cpu_model -join ", ")
     $cpuNorm = Normalize-CPUString $cpuRaw
 
     $found = $false
