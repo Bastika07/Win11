@@ -52,9 +52,10 @@ try {
 $results = @()
 foreach ($agent in $agentsResult) {
     $hostname = $agent.hostname
-    # Feldnamen ggf. anpassen!
-    $cpuRaw = ($agent.cpu_model -join ", ")
-    $cpuNorm = Normalize-CPUString $cpuRaw
+    $site     = $agent.site_name
+    $cpuRaw   = ($agent.cpu_model -join ", ")
+    $cpuNorm  = Normalize-CPUString $cpuRaw
+    $os       = $agent.operating_system
 
     $found = $false
     foreach ($entry in $cpuEntries) {
@@ -66,13 +67,17 @@ foreach ($agent in $agentsResult) {
 
     $status = if ($found) { "Unterstützt" } else { "Nicht unterstützt" }
     $results += [PSCustomObject]@{
-        Hostname      = $hostname
-        CPU           = $cpuRaw
-        'Windows 11 Status' = $status
+        Hostname             = $hostname
+        Standort             = $site
+        CPU                  = $cpuRaw
+        'Windows 11 Status'  = $status
+        Betriebssystem       = $os
     }
 }
 
-# === EXPORT ALS CSV ===
+# Export mit allen Spalten
 $results | Export-Csv -Path $csvPath -NoTypeInformation -Encoding UTF8
+
+
 
 Write-Host "Ergebnis als CSV gespeichert: $csvPath"
