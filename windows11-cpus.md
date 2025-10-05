@@ -1,6 +1,6 @@
 # Windows 11 24H2 Supported Processors
 
-*Generated on: 2025-09-28*
+*Generated on: 2025-10-05*
 *Source: Microsoft Learn Documentation*
 
 ## Intel Processors
@@ -818,6 +818,20 @@
 | AMD | Athlon™ | Silber 3050e |
 | AMD | Athlon™ | Silber 3050GE |
 | AMD | Athlon™ | Silber 3050U |
+| AMD | EPYC™ | 4124P |
+| AMD | EPYC™ | 4244P |
+| AMD | EPYC™ | 4245P |
+| AMD | EPYC™ | 4344P |
+| AMD | EPYC™ | 4345P |
+| AMD | EPYC™ | 4364P |
+| AMD | EPYC™ | 4464P |
+| AMD | EPYC™ | 4465P |
+| AMD | EPYC™ | 4484PX |
+| AMD | EPYC™ | 4545P |
+| AMD | EPYC™ | 4564P |
+| AMD | EPYC™ | 4565P |
+| AMD | EPYC™ | 4584PX |
+| AMD | EPYC™ | 4585PX |
 | AMD | EPYC™ | 7232P |
 | AMD | EPYC™ | 7252 |
 | AMD | EPYC™ | 7262 |
@@ -1179,13 +1193,13 @@
 | AMD | Ryzen™ | Z1 Extrem |
 | AMD | Ryzen™ | Z1 |
 
-**Total AMD Processors: 385**
+**Total AMD Processors: 399**
 
 ## Summary
 
 - **Total Intel Processors**: 779
-- **Total AMD Processors**: 385  
-- **Grand Total**: 1164
+- **Total AMD Processors**: 399  
+- **Grand Total**: 1178
 
 ## Sources
 
