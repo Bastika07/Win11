@@ -1,6 +1,6 @@
 # Windows 11 24H2 Supported Processors
 
-*Generated on: 2025-11-02*
+*Generated on: 2025-11-09*
 *Source: Microsoft Learn Documentation*
 
 ## Intel Processors
